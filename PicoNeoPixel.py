@@ -102,9 +102,9 @@ COLORS = (RED, YELLOW, GREEN, CYAN, BLUE, PURPLE, WHITE)
 # pixels_show()
 
 # 
-print("chases")
-for color in COLORS:
-    color_chase(color, 0.01)
+# print("chases")
+# for color in COLORS:
+#     color_chase(color, 0.01)
 
-# print("rainbow")
-# rainbow_cycle(0)
+print("rainbow")
+rainbow_cycle(0)
