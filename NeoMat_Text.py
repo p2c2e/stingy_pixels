@@ -12,6 +12,8 @@ class Matrix:
         self.color = color
         self.between = between
         self.totalpixels = self.height * self.width + self.between * (self.width - 1)
+        print(self.totalpixels)
+        # self.totalpixels = 400
         # pin = "board." + pin
         #this is a bad way to define the pin, but it works until a better way comes along
         #we are turing off the auto write to have smoother animation without the visible filling of pixles
@@ -23,10 +25,12 @@ class Matrix:
     def get_pixel_index(self, xp, yp):
         
         offset = self.height * (xp - 1) + self.between * (xp - 1)
-        if (xp % 2) == 0:
+        # print("I ", offset, self.height, self.between, xp)
+        if (xp % 2) != 0:
             offset = offset + (self.height - yp + 1)
         else:
             offset = offset + yp
+        # print("! ", xp, yp, " = ", offset)
         return offset
 
     def total_pixels(self):
@@ -38,7 +42,7 @@ class Matrix:
         for y in range(self.height): # the_fb.height()):
             for x in range(self.width): # the_fb.width):
                 if self.fb.pixel(x, y):
-                    print(x,y, " => ", x+1, self.height - y, " = ", self.get_pixel_index(x+1, self.height-y), " of ", self.totalpixels)
+                    print("# ", x,y, " => ", x+1, self.height - y, " = ", self.get_pixel_index(x+1, self.height-y), " of ", self.totalpixels)
                     self.pixels.set_pixel(self.get_pixel_index(x+1, self.height-y)-1, self.color[0], self.color[1], self.color[2])
                 else:
                     self.pixels.set_pixel(self.get_pixel_index(x+1, self.height-y)-1, 0, 0, 0) #turn off unused

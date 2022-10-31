@@ -20,9 +20,9 @@ def ws2812():
 #however, if you have quite a bit of processing to do before the next time you update the strip
 #you could put in delay=0 (or a lower delay)
 class ws2812b:
-    def __init__(self, num_leds, state_machine, pin, delay=0.001):
+    def __init__(self, num_leds, state_machine, pin, delay=0.1):
         self.pixels = array.array("I", [0 for _ in range(num_leds)])
-        self.sm = rp2.StateMachine(state_machine, ws2812, freq=8000000, sideset_base=Pin(pin))
+        self.sm = rp2.StateMachine(state_machine, ws2812, freq=8_000_000, sideset_base=Pin(pin))
         self.sm.active(1)
         self.num_leds = num_leds
         self.delay = delay
